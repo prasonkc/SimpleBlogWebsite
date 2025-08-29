@@ -1,4 +1,5 @@
 const express = require('express');
+const morgan = require('morgan')
 
 // Express App
 const app = express()
@@ -7,11 +8,25 @@ const app = express()
 app.set('view engine', 'ejs')
 app.set('views', __dirname + '/views'); //if views are in a seperate folder
 
+// Log into the console using custom middleware
+// app.use((req, res, next) => {
+//     console.log("host: ", req.hostname)
+//     console.log("path: ", req.path)
+//     console.log("method: ", req.method)
+//     console.log("\n")
+//     next();
+// })
+
 // Listen for requests
 app.listen(3000)
 
+// Middlewares and static files declaration
+app.use(express.static('public'))
+
 const blogs = [
   ];
+
+app.use(morgan('tiny'));
 
 app.get('/', (req, res)=>{
     // res.send("<p> Hello World! </p>")
