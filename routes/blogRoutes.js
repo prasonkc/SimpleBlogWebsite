@@ -28,6 +28,4 @@ router.post("/", blog_create_post);
 router.get("/:id", blog_details);
 router.delete("/:id", blog_delete);
 
-
-
 module.exports = router;
