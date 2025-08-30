@@ -10,7 +10,7 @@ const blog_index = (req, res) => {
 const blog_details = (req, res) => {
       Blog.findById(req.params.id)
     .then(result => res.render("details", { blog: result, title: "Blog Details" }))
-    .catch(err => console.log(err));
+    .catch(res.status(404).render("404", {title: "Blog not found"}));
 }
 
 const blog_create_get = (req, res) => {
